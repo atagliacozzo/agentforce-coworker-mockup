@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manuale di utilizzo del mockup Agentforce Coworker</title>
+<style>
+:root{
+  --page:#f4f6f9;--card:#ffffff;--sunk:#eef2f6;--ink:#14202e;--muted:#5c6b7c;--line:#dce3eb;
+  --accent:#0b5cab;--accent-soft:#e3eefa;--warn:#8a5a00;--warn-soft:#fff3d6;
+}
+@media (prefers-color-scheme:dark){
+  :root{--page:#0e141b;--card:#17202a;--sunk:#1e2935;--ink:#e8eef5;--muted:#93a3b5;--line:#2b3846;
+    --accent:#5aa2ea;--accent-soft:#1b3350;--warn:#f0c46a;--warn-soft:#3a2f12}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--page);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header.top{background:var(--card);border-bottom:1px solid var(--line);padding:28px 24px}
+header.top div{max-width:1080px;margin:0 auto}
+header.top p{margin:0;color:var(--muted);font-size:14px}
+header.top h1{margin:4px 0 6px;font-size:30px;line-height:1.2;font-weight:650}
+.layout{max-width:1080px;margin:0 auto;padding:24px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px;align-items:start}
+nav.toc{position:sticky;top:20px;font-size:14px}
+nav.toc b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+nav.toc a{display:block;padding:5px 10px;color:var(--ink);text-decoration:none;border-left:2px solid var(--line)}
+nav.toc a:hover{border-left-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+main{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 40px 40px;min-width:0}
+h2{font-size:23px;margin:44px 0 8px;padding-top:20px;border-top:1px solid var(--line);line-height:1.3}
+h2:first-child{border-top:none;margin-top:28px}
+h3{font-size:17px;margin:28px 0 4px}
+p{margin:8px 0}
+ul,ol{padding-left:22px;margin:8px 0}
+li{margin:4px 0}
+kbd{font:600 12.5px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:1px 7px;background:var(--sunk)}
+code{font:13px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--sunk);padding:1px 6px;border-radius:5px}
+pre{background:var(--sunk);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;font:12.5px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;margin:12px 0}
+pre code{background:none;padding:0}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px}
+th{text-align:left;font-weight:600;background:var(--sunk);padding:8px 10px;border-bottom:1px solid var(--line)}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.tablewrap{overflow-x:auto}
+.note,.warn{border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;padding:10px 16px;margin:16px 0}
+.warn{border-left-color:var(--warn);background:var(--warn-soft)}
+.note b:first-child,.warn b:first-child{display:block;font-size:13px;margin-bottom:2px}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;position:relative;padding:6px 0 6px 44px;margin:6px 0}
+.steps li::before{content:counter(s);position:absolute;left:0;top:4px;width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--card);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px}
+footer{max-width:1080px;margin:0 auto;padding:0 24px 40px;color:var(--muted);font-size:13px}
+@media(max-width:900px){.layout{grid-template-columns:1fr;gap:16px}nav.toc{position:static}main{padding:4px 20px 28px}}
+@media print{
+  body{background:#fff;color:#000;font-size:11pt}
+  nav.toc,footer{display:none}
+  .layout{display:block;padding:0}
+  main{border:none;padding:0}
+  h2{break-after:avoid}
+  pre,table,.note,.warn{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<header class="top"><div>
+  <p>Guida per chi presenta e per chi configura</p>
+  <h1>Manuale di utilizzo del mockup Agentforce Coworker</h1>
+  <p>App mobile simulata in italiano, con domande, fase di ricerca e risposte configurabili</p>
+</div></header>
+
+<div class="layout">
+<nav class="toc" aria-label="Indice">
+  <b>Indice</b>
+  <a href="#cose">1. Cos'è e cosa serve</a>
+  <a href="#avvio">2. Avvio rapido</a>
+  <a href="#anteprima">3. L'anteprima del telefono</a>
+  <a href="#apri">4. Aprire la configurazione</a>
+  <a href="#config">5. Configurare il mockup</a>
+  <a href="#immagini">6. Usare le immagini</a>
+  <a href="#salva">7. Salvare, esportare, importare</a>
+  <a href="#tasti">8. Tasti e scorciatoie</a>
+  <a href="#demo">9. Esempio incluso e demo dal vivo</a>
+  <a href="#problemi">10. Risoluzione dei problemi</a>
+  <a href="#limiti">11. Limiti</a>
+  <a href="#json">Appendice: formato del JSON</a>
+</nav>
+
+<main>
+
+<h2 id="cose">1. Cos'è e cosa serve</h2>
+<p>Il mockup simula l'app mobile <b>Agentforce Coworker</b> e serve per mostrare, senza collegarsi a sistemi reali, come una persona fa una domanda, come l'agente cerca le informazioni (Salesforce, Slack, altri agenti) e come risponde. Domande, passi di ricerca, tempi di attesa, risposte, fonti e immagini si configurano da un pannello normalmente nascosto, in modo che il pubblico veda solo il telefono.</p>
+
+<h3>I file</h3>
+<div class="tablewrap"><table>
+<tr><th>File</th><th>A cosa serve</th><th>Necessario?</th></tr>
+<tr><td><code>agentforce-coworker-mockup.html</code></td><td>L'app. Contiene tutto: grafica, icone e logica.</td><td>Sì</td></tr>
+<tr><td><code>agentforce-coworker-configurazione.json</code></td><td>La configurazione di esempio del mockup (tre categorie, sei domande, una nascosta). È già incorporata nell'HTML: il mockup si apre con questa e "Ripristina esempio" la riporta. Il file serve come copia o per usarla in un altro browser (Importa).</td><td>No</td></tr>
+<tr><td><code>grafico-pipeline.png</code></td><td>Immagine di esempio usata da una risposta di default.</td><td>No</td></tr>
+</table></div>
+
+<h3>Requisiti</h3>
+<ul>
+<li>Un browser recente (Chrome, Edge, Safari o Firefox), su computer o telefono.</li>
+<li>Nessuna installazione e nessuna connessione: il file funziona anche offline.</li>
+<li>Tutti i dati mostrati sono fittizi e inseriti da te. Il mockup non si collega a Salesforce, Slack o altri sistemi.</li>
+</ul>
+
+<h2 id="avvio">2. Avvio rapido</h2>
+<ol class="steps">
+<li><b>Metti i file nella stessa cartella.</b> Se userai immagini, devono stare accanto al file HTML.</li>
+<li><b>Apri <code>agentforce-coworker-mockup.html</code></b> con un doppio clic. Si apre nel browser e mostra solo il telefono.</li>
+<li><b>Tocca un chip</b> sotto la barra di testo (per esempio "Trova") e scegli una delle domande suggerite.</li>
+<li><b>Guarda la chat:</b> compaiono i passi di ricerca, poi la risposta. Per saltare l'attesa di un passo premi <kbd>↓</kbd>.</li>
+<li><b>Apri la configurazione</b> con un doppio clic nell'angolo in alto a destra della pagina.</li>
+<li><b>Importa la demo</b> con "Importa configurazione" e scegliendo il file JSON, oppure modifica le domande di esempio.</li>
+</ol>
+
+<h2 id="anteprima">3. L'anteprima del telefono</h2>
+
+<h3>Home</h3>
+<p>Mostra un saluto con il nome dell'utente, la barra di testo e i chip delle categorie (per esempio "Trova", "Aggiornami", "Pianifica"). Toccando un chip si apre l'elenco delle sue domande suggerite; toccando una domanda parte la conversazione.</p>
+<ul>
+<li>Se il campo "Saluto" della configurazione è vuoto, il saluto cambia con l'ora: Buongiorno fino alle 12, Buon pomeriggio fino alle 18, Buonasera dopo.</li>
+<li><b>Digitazione simulata:</b> quando scegli una domanda preimpostata (dal menu dei chip, da un pulsante di follow-up o dai Recenti), il testo viene digitato nella barra carattere per carattere, come se lo scrivesse l'utente. A digitazione finita il testo <b>resta nella barra e la domanda non parte da sola</b>: per inviarla bisogna sempre premere <kbd>Invio</kbd> (oppure toccare il pulsante di invio). La barra si allarga fino a quattro righe circa e poi scorre, così l'ultima parte scritta resta sempre visibile. Con l'opzione attiva la digitazione simula anche incertezza (pause più lunghe tra le parole) e qualche errore di battitura: un carattere sbagliato vicino a quello giusto, una breve esitazione e la correzione con il tasto di cancellazione. Durante la digitazione la barra non è modificabile e gli altri pulsanti sono bloccati; <kbd>↓</kbd> completa subito il testo. La velocità si imposta nella configurazione.</li>
+<li>Puoi anche scrivere una domanda e premere <kbd>Invio</kbd> o il pulsante di invio. Se il testo coincide con una domanda configurata (maiuscole e spazi a parte), parte quella; altrimenti compare la risposta predefinita. Un invio a campo vuoto mostra "Scrivi una domanda".</li>
+</ul>
+
+<h3>La conversazione</h3>
+<p>Ogni domanda segue sempre la stessa sequenza:</p>
+<ol>
+<li><b>Domanda dell'utente</b> in una nuvoletta a destra.</li>
+<li><b>Tre pallini</b> di attesa per il tempo impostato (di norma 0,8 secondi).</li>
+<li><b>Risposta immediata</b> (facoltativa): una frase dell'agente, per esempio il piano di lavoro, che resta visibile per il tempo impostato prima che partano i passi.</li>
+<li><b>Fase di ricerca:</b> i passi appaiono uno alla volta. Ogni passo può essere preceduto da un messaggio dell'agente, mostra uno spinner mentre è in corso e, al termine, un esito (per esempio "20 risultati").</li>
+<li><b>Risposta</b> scritta a flusso, con eventuale tabella e immagini.</li>
+<li><b>Barra di feedback, fonti e domande di follow-up.</b></li>
+</ol>
+
+<h3>I passi di ricerca</h3>
+<div class="tablewrap"><table>
+<tr><th>Elemento</th><th>Cosa mostra</th></tr>
+<tr><td>Icona</td><td>Dipende dal sistema scelto: Salesforce, Slack, Altro agente (contatto con un altro agente), Web o Altro.</td></tr>
+<tr><td>Etichetta e dettaglio</td><td>Il nome del passo e, sotto, una riga più piccola (per esempio la query di ricerca).</td></tr>
+<tr><td>Esito</td><td>A destra, con una spunta, quando il passo è finito. Serve per i numeri, come "20 risultati" o "3 risposte".</td></tr>
+<tr><td>Stato</td><td><b>Completato</b>: aspetto normale. <b>Nuovo tentativo</b>: etichetta in rosa, come nel video di riferimento. <b>Errore</b>: etichetta e icona in rosso.</td></tr>
+</table></div>
+
+<h3>La risposta</h3>
+<ul>
+<li><b>Testo</b> con grassetto, elenchi e citazioni numerate. Toccando un numero compare la fonte corrispondente.</li>
+<li><b>Tabella</b> opzionale, con testo dopo la tabella.</li>
+<li><b>Immagini</b> opzionali. Toccandole si ingrandiscono; si chiudono con un tocco o con <kbd>Esc</kbd>.</li>
+<li><b>Barra di feedback:</b> pollice su, pollice giù (si possono attivare e disattivare), copia (copia il testo della risposta, non la tabella) e l'icona a barre che mostra o nasconde l'elenco di tutte le fonti.</li>
+<li><b>Domande di follow-up:</b> pulsanti sotto l'ultima risposta. Toccandone uno, il suo testo viene inviato come se l'utente lo avesse scritto.</li>
+</ul>
+
+<h3>Menu laterale</h3>
+<p>Il pulsante "Apri" in alto a sinistra mostra il menu: Nuova chat, Home, Digest, Recenti e il nome dell'utente in basso. Le voci "Recenti" provengono dal campo omonimo della configurazione; la chat in corso compare in cima. Toccando una voce recente, il suo testo viene inviato come domanda. Il Digest è solo un segnaposto e mostra un avviso. Il pulsante con la matita, in alto a destra durante una chat, apre una nuova chat.</p>
+
+<h2 id="apri">4. Aprire la configurazione</h2>
+<p>All'apertura la pagina mostra solo il telefono. La configurazione resta nascosta, così può restare invisibile a chi guarda lo schermo.</p>
+<ul>
+<li><b>Mostra o nascondi:</b> doppio clic (o doppio tocco su touch) nell'angolo in alto a destra della pagina. L'area è invisibile e misura circa 72×72 pixel.</li>
+<li><b>Da tastiera:</b> premi <kbd>Tab</kbd> una volta per portare il focus sull'area nascosta, poi <kbd>Invio</kbd>.</li>
+<li><b>Chiudere:</b> ripeti il doppio clic, premi <kbd>Esc</kbd> oppure usa "Nascondi configurazione" nella barra in alto.</li>
+</ul>
+<div class="note"><b>Suggerimento</b>Prima di una presentazione chiudi la configurazione e metti il browser a schermo intero premendo <kbd>F</kbd> (in alternativa <kbd>F11</kbd> su Windows, <kbd>Ctrl</kbd>+<kbd>Cmd</kbd>+<kbd>F</kbd> su Mac). Con la configurazione nascosta la pagina non ha barre di scorrimento: il telefono resta centrato e, se lo schermo è basso, si accorcia per starci tutto (la chat scorre al suo interno).</div>
+
+<h2 id="config">5. Configurare il mockup</h2>
+<p>Con la configurazione aperta, il telefono resta a sinistra e il pannello a destra. Ogni modifica si salva da sola e l'anteprima si aggiorna subito. Una conversazione già in corso non cambia: per vedere l'effetto usa "Prova nell'anteprima" o apri una nuova chat.</p>
+
+<h3>5.1 Impostazioni generali</h3>
+<div class="tablewrap"><table>
+<tr><th>Campo</th><th>Effetto</th></tr>
+<tr><td>Nome utente</td><td>Compare nel saluto e nel menu laterale (con le iniziali).</td></tr>
+<tr><td>Saluto</td><td>Per esempio "Buon pomeriggio". Se è vuoto si sceglie in base all'ora.</td></tr>
+<tr><td>Digitazione simulata</td><td>Caratteri al secondo con cui viene digitata la domanda preimpostata scelta. Valori bassi (per esempio 12–15) danno una digitazione lenta e leggibile dalla sala; 0 la disattiva e la domanda parte subito. Il valore predefinito è 22.</td></tr>
+<tr><td>Incertezza ed errori di battitura simulati</td><td>"Sì" aggiunge pause e qualche errore corretto (da zero a tre per domanda, in base alla lunghezza; nessun errore sotto i 25 caratteri). "No" dà una digitazione regolare. La velocità indicata sopra è una media: le pause la allungano un poco.</td></tr>
+<tr><td>Attesa tra le righe dei messaggi dell'agente (minimo e massimo)</td><td>Secondi di attesa tra una riga e la successiva nei messaggi su più righe (risposta immediata e messaggi prima dei passi). L'attesa è casuale tra minimo e massimo; valori predefiniti 1 e 3 secondi. Con minimo e massimo a 0 le righe compaiono insieme, senza attesa. Si applica a tutti i messaggi; la risposta finale continua a scriversi a flusso.</td></tr>
+<tr><td>Chat recenti</td><td>Una riga per voce, mostrate nel menu laterale.</td></tr>
+<tr><td>Risposta alle domande non configurate</td><td>Testo mostrato quando l'utente scrive una domanda che non coincide con nessuna delle tue.</td></tr>
+</table></div>
+
+<h3>5.2 Categorie e domande</h3>
+<ul>
+<li>Le <b>categorie</b> diventano i chip della home. Con "Categoria" ne aggiungi una; "Elimina categoria" rimuove quella selezionata insieme alle sue domande.</li>
+<li>Per ogni categoria puoi cambiare il nome e gestire l'elenco delle <b>domande suggerite</b>: "Aggiungi domanda" ne crea una, "Elimina domanda" rimuove quella selezionata.</li>
+<li>Le eliminazioni sono immediate e senza annullamento: se hai dubbi, esporta prima la configurazione (sezione 7).</li>
+</ul>
+
+<h3>5.3 Interazione: la domanda</h3>
+<p>Il campo "Domanda dell'utente" è il testo che appare nella nuvoletta e nell'elenco dei suggerimenti. Se vuoi che un follow-up richiami questa domanda, deve coincidere con quello scritto nel campo follow-up (maiuscole e spazi a parte).</p>
+
+<h3>5.4 Risposta immediata e fase di ricerca</h3>
+<p>Subito dopo i tre pallini, l'agente può mostrare una <b>risposta immediata</b>, per esempio il piano ("Ecco il mio piano: collego i sistemi · unisco i dati · analizzo il rischio · preparo le comunicazioni. Parto dai sistemi."). Si imposta nella sezione "Fase di ricerca", sopra l'elenco dei passi:</p>
+<div class="tablewrap"><table>
+<tr><th>Campo</th><th>Cosa imposta</th></tr>
+<tr><td>Tempo prima del primo messaggio</td><td>Secondi tra l'invio della domanda e la comparsa del primo messaggio dell'agente, durante i quali si vedono i tre pallini di attesa (anche decimali). Con 0 il messaggio compare subito. Il valore predefinito è 0,8. <kbd>↓</kbd> interrompe l'attesa.</td></tr>
+<tr><td>Risposta immediata</td><td>Il testo mostrato prima dei passi. Se è vuoto, non compare nulla e i passi partono subito. Si può formattare (vedi sotto, "Formattare i messaggi dell'agente").</td></tr>
+<tr><td>Tempo in cui resta visibile</td><td>Secondi di attesa prima che parta il primo passo (anche decimali, per esempio 2,5). Con 0 i passi partono subito. Vale solo se la risposta immediata non è vuota. <kbd>↓</kbd> interrompe l'attesa.</td></tr>
+</table></div>
+<p>La fase di ricerca è l'elenco di passi mostrati prima della risposta. Con "Aggiungi passo" ne crei di nuovi; ogni passo ha i pulsanti per spostarlo su o giù e per eliminarlo. Una domanda può anche non avere passi: in quel caso, dopo i pallini compare subito la risposta.</p>
+<div class="tablewrap"><table>
+<tr><th>Campo</th><th>Cosa imposta</th></tr>
+<tr><td>Sistema interrogato</td><td>Salesforce, Slack, Altro agente, Web o Altro. Cambia l'icona.</td></tr>
+<tr><td>Stato al termine</td><td>Completato, Nuovo tentativo o Errore.</td></tr>
+<tr><td>Etichetta del passo</td><td>Il titolo, per esempio "Ricerca record Salesforce (Opportunità)".</td></tr>
+<tr><td>Dettaglio</td><td>La riga sotto il titolo: una query, una richiesta all'agente.</td></tr>
+<tr><td>Esito e numeri</td><td>Il testo a destra a passo concluso, per esempio "20 risultati" o "3 risposte".</td></tr>
+<tr><td>Attesa minima e massima</td><td>Secondi, anche decimali. Il passo resta in corso per un tempo casuale tra i due valori. Con valori uguali l'attesa è fissa. Se il massimo è minore del minimo, il pannello lo allinea e lo segnala. L'attesa non scende mai sotto 0,2 secondi.</td></tr>
+<tr><td>Messaggio dell'agente prima del passo</td><td>Una frase che compare prima del passo (per esempio "Cerco subito le attività di oggi"). Se è vuoto, non compare nulla. Si può formattare (vedi sotto).</td></tr>
+<tr><td>Tempo tra il messaggio e l'inizio del passo</td><td>Secondi di attesa tra il messaggio e la comparsa del passo (anche decimali). Con 0 il passo parte subito dopo il messaggio. Vale solo se il messaggio non è vuoto. <kbd>↓</kbd> interrompe l'attesa.</td></tr>
+</table></div>
+<div class="note"><b>Per una demo dal vivo</b>Imposta attese lunghe, che coprano il tempo in cui parli, e usa <kbd>↓</kbd> per passare al passo successivo quando hai finito. Per le prove, accorcia gli intervalli.</div>
+
+<h3>Formattare i messaggi dell'agente</h3>
+<p>Sia la risposta immediata sia il messaggio prima di ogni passo accettano una formattazione semplice, la stessa della risposta finale:</p>
+<div class="tablewrap"><table>
+<tr><th>Per ottenere</th><th>Si scrive</th></tr>
+<tr><td>Grassetto</td><td><code>**testo**</code></td></tr>
+<tr><td>Elenco puntato</td><td>una riga per voce, ciascuna che inizia con <code>- </code></td></tr>
+<tr><td>Elenco numerato</td><td>una riga per voce, ciascuna che inizia con <code>1. </code>, <code>2. </code>…</td></tr>
+<tr><td>Paragrafi separati</td><td>una riga per paragrafo (a capo nel campo di testo)</td></tr>
+</table></div>
+<pre><code>**Ci sono.** Ogni ora conta: vado per gradi.
+1. **Cerco** le attività in scadenza.
+2. **Controllo** Slack.
+3. **Ti riassumo** cosa è urgente.</code></pre>
+<p><b>Una riga alla volta.</b> Se un messaggio ha più righe (paragrafi, voci di elenco), la prima compare subito e le altre una alla volta, con un'attesa casuale tra il minimo e il massimo impostati nelle impostazioni generali (predefinito: da 1 a 3 secondi). Il tempo di permanenza della risposta immediata e l'attesa prima del passo contano dalla comparsa dell'ultima riga. <kbd>↓</kbd> mostra subito tutte le righe rimanenti.</p>
+<p>Il testo dei titoli e dei dettagli dei passi, invece, resta semplice, senza formattazione.</p>
+<h3>5.5 Risposta</h3>
+<div class="tablewrap"><table>
+<tr><th>Campo</th><th>Cosa imposta</th></tr>
+<tr><td>Formato</td><td>"Solo testo" oppure "Testo con tabella".</td></tr>
+<tr><td>Testo della risposta</td><td>Il corpo principale. Supporta <code>**grassetto**</code>, elenchi puntati (righe che iniziano con <code>- </code>) o numerati (righe che iniziano con <code>1. </code>), citazioni come <code>[1]</code>, <code>[2]</code> e immagini nel testo (sezione 6). Una riga vuota separa i paragrafi.</td></tr>
+<tr><td>Intestazioni colonne</td><td>Solo per il formato con tabella, separate dal simbolo <code>|</code>.</td></tr>
+<tr><td>Righe della tabella</td><td>Una riga per riga, con le celle separate da <code>|</code>. Le celle sono testo semplice.</td></tr>
+<tr><td>Testo dopo la tabella</td><td>Compare sotto la tabella e supporta grassetto e citazioni.</td></tr>
+<tr><td>Immagini della risposta</td><td>Una riga per immagine: <code>nome-file.png | didascalia</code> (sezione 6).</td></tr>
+<tr><td>Fonti citate</td><td>Una riga per fonte: <code>titolo | dettaglio</code>. La prima riga è la fonte [1], la seconda la [2], e così via.</td></tr>
+<tr><td>Domande di follow-up</td><td>Una per riga: diventano pulsanti sotto la risposta.</td></tr>
+</table></div>
+<p>Esempio di testo con citazioni:</p>
+<pre><code>Ho trovato **14 opportunità** aperte [1].
+- Attività in scadenza oggi: 3 [2].
+- Messaggi da leggere: 5 [3].</code></pre>
+
+<h3>5.6 Domande nascoste</h3>
+<p>Nella sezione "Domanda" c'è la casella <b>Domanda nascosta</b>. Quando è attiva:</p>
+<ul>
+<li>la domanda <b>non compare</b> nei suggerimenti sotto i chip e non compare nei pulsanti di follow-up (se tutte le domande di una categoria sono nascoste, scompare anche il suo chip);</li>
+<li>il pubblico vede soltanto la <b>digitazione</b> nella barra e poi la conversazione, senza che il testo sia mai stato elencato;</li>
+<li>la digitazione parte premendo la <b>freccia a destra</b> (<kbd>→</kbd>) e la domanda viene inviata premendo <kbd>Invio</kbd>.</li>
+</ul>
+<p>Nell'elenco delle domande del pannello, quelle nascoste sono segnate con "· nascosta".</p>
+<h4 style="margin:16px 0 4px;font-size:15px">Quale domanda parte con →</h4>
+<ol>
+<li>Se l'ultima risposta ha, tra i follow-up, una domanda nascosta non ancora usata in questa chat, parte quella.</li>
+<li>Altrimenti parte la <b>prima domanda nascosta, in ordine di configurazione, non ancora usata</b> nella chat in corso (prima per categoria, poi per posizione nell'elenco).</li>
+<li>Dopo l'ultima domanda nascosta il tasto non fa più nulla. "Nuova chat" azzera l'elenco delle domande già usate, così <kbd>→</kbd> ricomincia dalla prima.</li>
+</ol>
+<ul>
+<li>Dopo un ritorno indietro con <kbd>←</kbd>, <kbd>→</kbd> non avvia una nuova domanda ma riprende il percorso da dove ti sei fermato.</li>
+<li>Se torni con <kbd>←</kbd> alla domanda già digitata ma non ancora inviata, <kbd>Invio</kbd> (o <kbd>→</kbd>) la invia.</li>
+<li><kbd>→</kbd> non fa nulla mentre la domanda viene digitata o mentre l'agente sta ancora cercando o scrivendo: si può premere di nuovo solo a risposta finita. Se la configurazione è aperta, un avviso segnala quando non restano domande.</li>
+<li>Il tasto funziona anche con il campo di testo vuoto selezionato; se hai già scritto qualcosa nel campo, <kbd>→</kbd> sposta il cursore come al solito.</li>
+<li>Una domanda nascosta resta richiamabile scrivendone il testo identico a mano.</li>
+</ul>
+<h3>5.7 Provare e catene di domande</h3>
+<p>"Prova nell'anteprima" apre una nuova chat ed esegue la domanda che stai modificando. Per costruire un percorso a più domande, inserisci nel campo follow-up il testo identico di un'altra domanda: toccando il pulsante, partirà quella domanda con la sua fase di ricerca e la sua risposta. Con questo meccanismo si può raccontare una storia a più interazioni, come nell'esempio incluso (sezione 9).</p>
+
+<h2 id="immagini">6. Usare le immagini</h2>
+<ol class="steps">
+<li><b>Copia il file</b> (PNG, JPG, GIF, WebP, SVG) nella <b>stessa cartella</b> del file HTML.</li>
+<li><b>Aggiungilo alla risposta,</b> in uno di questi due modi:
+  <ul>
+  <li>nel campo "Immagini della risposta", una riga per immagine: <code>grafico-pipeline.png | Pipeline per fase</code>;</li>
+  <li>dentro il testo, nel punto esatto in cui deve comparire: <code>![Pipeline per fase](grafico-pipeline.png)</code> su una riga a sé.</li>
+  </ul>
+</li>
+<li><b>Prova</b> con "Prova nell'anteprima".</li>
+</ol>
+<ul>
+<li>Il pulsante "Scegli un'immagine…" aggiunge al campo il nome del file selezionato, per evitare errori di battitura. Registra solo il nome: il file va comunque copiato accanto all'HTML.</li>
+<li>Le immagini compaiono quando la risposta ha finito di scriversi: prima appaiono il testo e la tabella, poi le immagini del campo, poi la barra di feedback.</li>
+<li>Sono ammessi solo nomi di file relativi (eventualmente in una sottocartella). Indirizzi web, percorsi assoluti, <code>..</code> e simili vengono rifiutati con un avviso nel riquadro.</li>
+<li>Se il file non esiste nella cartella, al suo posto compare un riquadro con il nome mancante.</li>
+</ul>
+<div class="warn"><b>Attenzione</b>Se sposti o invii solo il file HTML, le immagini non si vedranno. Sposta o invia sempre la cartella intera.</div>
+
+<h2 id="salva">7. Salvare, esportare, importare</h2>
+<h3>Salvataggio automatico</h3>
+<p>Ogni modifica viene salvata nel browser (memoria locale). Alla riapertura trovi la configurazione com'era. Il salvataggio è legato al browser e al profilo che stai usando: in alcuni browser dipende anche dalla posizione del file. Per essere sicuro di non perdere il lavoro, esporta.</p>
+
+<h3>Quale configurazione è in uso</h3>
+<p>In cima al pannello di configurazione, sotto il titolo, c'è il riquadro <b>"Configurazione in uso"</b>. Mostra da dove arriva quello che stai vedendo:</p>
+<div class="tablewrap"><table>
+<tr><th>Cosa legge</th><th>Significato</th></tr>
+<tr><td><b>Il nome del file predefinito</b> con la scritta "(predefinita)"</td><td>È la configurazione incorporata nel mockup, senza modifiche. Se l'hai modificata compare "(predefinita, modificata)" e il riquadro avverte che non è stata ancora esportata.</td></tr>
+<tr><td><b>Nome del file</b>, per esempio <code>agentforce-coworker-configurazione.json</code></td><td>È l'ultimo file importato (con data e ora) o esportato. Il riquadro dice anche se da allora hai fatto modifiche: "Nessuna modifica da allora" oppure "Modificata da allora e non ancora esportata".</td></tr>
+</table></div>
+<ul>
+<li>Scorrere tra categorie e domande nel pannello non conta come modifica; cambiare un testo, un tempo o un'opzione sì.</li>
+<li>L'indicazione viene salvata con la configurazione e si ritrova alla riapertura nello stesso browser.</li>
+<li>"Esporta configurazione" usa lo <b>stesso nome del file in uso</b> (per esempio il file importato in precedenza); se non ce n'è uno, il nome è <code>agentforce-coworker-configurazione.json</code>. Dopo l'esportazione il riquadro riporta il nome del file e l'ora.</li>
+<li>"Ripristina esempio" riporta la configurazione predefinita incorporata e il riquadro torna a "(predefinita)".</li>
+</ul>
+<h3>Barra in alto (con la configurazione aperta)</h3>
+<div class="tablewrap"><table>
+<tr><th>Pulsante</th><th>Cosa fa</th></tr>
+<tr><td>Nascondi configurazione</td><td>Torna alla sola vista del telefono.</td></tr>
+<tr><td>Esporta configurazione</td><td>Scarica un file JSON con tutte le impostazioni, con lo stesso nome del file in uso (altrimenti <code>agentforce-coworker-configurazione.json</code>). Serve come copia di sicurezza o per condividerle.</td></tr>
+<tr><td>Importa configurazione</td><td>Carica un file JSON e <b>sostituisce</b> la configurazione attuale. Se il file non è valido, compare un messaggio e non cambia nulla.</td></tr>
+<tr><td>Ripristina esempio</td><td>Torna alla configurazione di esempio. Il primo clic chiede conferma ("Conferma ripristino"): serve un secondo clic entro 4 secondi, altrimenti l'azione si annulla.</td></tr>
+</table></div>
+
+<h3>Importare una configurazione</h3>
+<ol class="steps">
+<li>Apri la configurazione (sezione 4).</li>
+<li>Scegli <b>Importa configurazione</b>.</li>
+<li>Seleziona il file JSON. Compare la conferma "Configurazione importata da…" e l'anteprima torna alla home.</li>
+</ol>
+<p>I file esportati con versioni precedenti del mockup si importano comunque: le durate fisse vengono convertite in intervalli e i vecchi campi "strumento" ed "esito" diventano un passo di ricerca.</p>
+<div class="warn"><b>Riservatezza</b>Il file esportato contiene tutti i testi che hai scritto. Usa nomi e dati fittizi e tratta il file come materiale interno se riflette contenuti non ancora pubblici.</div>
+
+<h2 id="tasti">8. Tasti e scorciatoie</h2>
+<p><b>Focus all'apertura.</b> Quando il mockup si apre, e ogni volta che si torna alla home (per esempio con <kbd>R</kbd>), il cursore è già nel campo "Fai una domanda…", così puoi scrivere subito. Sui dispositivi touch il campo non viene selezionato da solo, per non far comparire la tastiera.</p>
+<p><b>Lettere e scorciatoie.</b> Con il cursore nel campo <i>vuoto</i>, i tasti <kbd>F</kbd> e <kbd>R</kbd> premuti in minuscolo funzionano come scorciatoie. Se invece premi una lettera maiuscola (<kbd>Maiusc</kbd> + lettera, come nell'iniziale di "Trova…") o il campo contiene già del testo, le lettere si scrivono normalmente. Una domanda scritta a mano che inizia con "f" o "r" minuscola attiverebbe quindi la scorciatoia: inizia con la maiuscola.</p>
+<div class="tablewrap"><table>
+<tr><th>Azione</th><th>Come</th></tr>
+<tr><td>Mostrare o nascondere la configurazione</td><td>Doppio clic o doppio tocco nell'angolo in alto a destra della pagina. Da tastiera: <kbd>Tab</kbd> poi <kbd>Invio</kbd>.</td></tr>
+<tr><td>Tornare indietro di un passo</td><td><kbd>←</kbd> (freccia a sinistra), a conversazione ferma o in corso. Per riprendere da lì: <kbd>→</kbd> oppure <kbd>↓</kbd>. Vedi "Tornare indietro con ←" qui sotto.</td></tr>
+<tr><td>Ripartire da capo</td><td><kbd>R</kbd>, con il cursore fuori da un campo di testo. Interrompe qualsiasi cosa sia in corso (digitazione, passi, risposta), svuota la chat e la barra di testo, chiude il menu laterale e riporta la home com'era all'apertura. Azzera anche l'elenco delle domande nascoste già usate, quindi <kbd>→</kbd> ricomincia dalla prima. Le impostazioni non cambiano.</td></tr>
+<tr><td>Passare a schermo intero e uscirne</td><td><kbd>F</kbd>, con il cursore fuori da un campo di testo (funziona anche mentre una domanda viene digitata). Alcuni browser, come Safari su iPhone, non permettono lo schermo intero per le pagine web: in quel caso compare un avviso.</td></tr>
+<tr><td>Digitare e inviare la prossima domanda nascosta</td><td><kbd>→</kbd> (freccia a destra), a conversazione ferma.</td></tr>
+<tr><td>Scorrere la conversazione</td><td><kbd>↑</kbd> e <kbd>↓</kbd> (anche <kbd>Pag↑</kbd> e <kbd>Pag↓</kbd>). Dopo l'invio di una domanda il focus passa alla chat, quindi le frecce scorrono subito la conversazione (per esempio per vedere un grafico sotto la risposta); funzionano anche dopo un clic sullo sfondo, mentre la configurazione è nascosta. <kbd>↓</kbd> scorre solo quando non c'è un'attesa da saltare: se un passo è in corso o la conversazione è ferma dopo <kbd>←</kbd>, <kbd>↓</kbd> salta l'attesa o riprende.</td></tr>
+<tr><td>Saltare l'attesa del passo in corso o completare subito la digitazione simulata</td><td><kbd>↓</kbd> (freccia in basso). Non c'è nessun pulsante visibile: il salto è pensato per chi presenta con la tastiera e il pubblico non lo nota.</td></tr>
+<tr><td>Inviare la domanda scritta o digitata dal mockup</td><td><kbd>Invio</kbd>, sia nel campo di testo sia con il cursore fuori dai campi, oppure il pulsante di invio del telefono. Una domanda digitata dal mockup non parte mai da sola.</td></tr>
+<tr><td>Chiudere l'immagine ingrandita</td><td>Un tocco sull'immagine oppure <kbd>Esc</kbd>.</td></tr>
+<tr><td>Chiudere la configurazione</td><td><kbd>Esc</kbd> (se non c'è un'immagine ingrandita).</td></tr>
+</table></div>
+
+<h3>Come funziona il salto dell'attesa</h3>
+<ul>
+<li>Ogni pressione di <kbd>↓</kbd> chiude un solo passo. Per saltarne più d'uno, premi il tasto più volte.</li>
+<li><kbd>↓</kbd> chiude anche l'attesa dopo la risposta immediata e quella tra il messaggio di un passo e l'inizio del passo, e mostra subito le righe mancanti di un messaggio che sta comparendo riga per riga.</li>
+<li>Il passo chiuso mostra comunque il suo esito, poi la chat prosegue con una breve pausa.</li>
+<li><kbd>↓</kbd> non agisce quando il cursore è in un campo di testo del pannello di configurazione, in una tendina o in un campo numerico, per non interferire con la digitazione. Funziona invece nel campo "Fai una domanda…" del telefono.</li>
+<li>Durante la digitazione simulata di una domanda preimpostata, <kbd>↓</kbd> scrive subito il testo rimanente, senza inviarlo: la domanda parte solo con <kbd>Invio</kbd>.</li>
+<li>La scrittura a flusso della risposta finale non si può saltare.</li>
+</ul>
+
+<h3>Tornare indietro con ←</h3>
+<p>La freccia a sinistra riporta la chat al <b>passo precedente</b>, qualunque esso sia. Il mockup ricorda queste tappe, nell'ordine in cui compaiono:</p>
+<ol>
+<li>la domanda digitata nella barra, prima dell'invio;</li>
+<li>la domanda inviata (con i tre pallini);</li>
+<li>la risposta immediata;</li>
+<li>ognuno dei passi di ricerca, a passo concluso (con il suo eventuale messaggio);</li>
+<li>la risposta finale, con fonti e follow-up.</li>
+</ol>
+<ul>
+<li>Ogni pressione di <kbd>←</kbd> torna alla tappa precedente: dalla risposta finale all'ultimo passo, poi al penultimo, fino alla risposta immediata, alla domanda inviata, alla domanda digitata e infine alla home vuota.</li>
+<li>Il ritorno vale anche tra una domanda e l'altra: dalla prima tappa di una domanda successiva si torna alla risposta finale della domanda precedente.</li>
+<li>Se premi <kbd>←</kbd> mentre un passo è ancora in corso (spinner attivo), l'avanzamento si ferma e si torna all'ultimo passo concluso.</li>
+<li>Dopo un ritorno indietro la conversazione resta <b>ferma</b>. Per riprendere da lì, con le attese e i tempi normali, premi <kbd>→</kbd> o <kbd>↓</kbd>. Per riguardare più volte lo stesso punto, usa di nuovo <kbd>←</kbd> e poi <kbd>→</kbd>.</li>
+<li><kbd>←</kbd> non agisce quando il cursore è in un campo di testo con del testo già scritto (in quel caso sposta il cursore). <kbd>R</kbd> azzera anche la memoria delle tappe.</li>
+</ul>
+<h2 id="demo">9. Esempio incluso e demo dal vivo</h2>
+<p>La configurazione di esempio (file <code>agentforce-coworker-configurazione.json</code>, incorporata nel mockup) contiene tre categorie, <b>Trova</b>, <b>Aggiornami</b> e <b>Pianifica</b>, con cinque domande visibili e una nascosta. Tutti i dati sono inventati. Serve da punto di partenza: modificala o sostituiscila con la tua.</p>
+
+<h3>Preparazione</h3>
+<ol class="steps">
+<li>Apri il mockup e metti il browser a schermo intero con <kbd>F</kbd>. La configurazione resta nascosta.</li>
+<li>Apri la configurazione (sezione 4) e controlla le attese dei passi e la velocità di digitazione: per una presentazione dal vivo imposta attese lunghe, da saltare con <kbd>↓</kbd> quando hai finito di parlare.</li>
+<li>Se usi immagini, copiale nella stessa cartella dell'HTML (sezione 6).</li>
+<li>Prova il percorso completo almeno una volta, poi riparti da capo con <kbd>R</kbd>.</li>
+</ol>
+
+<h3>Svolgimento</h3>
+<div class="tablewrap"><table>
+<tr><th>Fase</th><th>Cosa fai</th><th>Cosa succede</th></tr>
+<tr><td>Domanda visibile</td><td>Tocca un chip e poi una delle domande, oppure scrivi il testo.</td><td>Il testo viene digitato nella barra; premi <kbd>Invio</kbd> per inviarlo.</td></tr>
+<tr><td>Domanda nascosta</td><td>Premi <kbd>→</kbd>.</td><td>Viene digitata la domanda nascosta ("Com'è andata la settimana con i clienti principali?"), senza che sia mai stata elencata. Poi <kbd>Invio</kbd>.</td></tr>
+<tr><td>Risposta</td><td>Premi <kbd>↓</kbd> per saltare le attese; con <kbd>←</kbd> torni indietro di un passo.</td><td>Messaggio dell'agente, passi di ricerca con esito, risposta con tabella, citazioni e fonti.</td></tr>
+<tr><td>Ripartenza</td><td>Premi <kbd>R</kbd>.</td><td>Tutto si azzera e si torna alla home.</td></tr>
+</table></div>
+<p>Per scrivere dal vivo invece di usare <kbd>→</kbd>, il testo deve coincidere con quello della domanda configurata (maiuscole e spazi a parte). Altrimenti compare la risposta predefinita.</p>
+<p><b>Numeri coerenti:</b> se modifichi un numero in una risposta, cambia anche gli altri punti in cui compare (tabelle, fonti, follow-up).</p>
+
+<h2 id="problemi">10. Risoluzione dei problemi</h2>
+<div class="tablewrap"><table>
+<tr><th>Problema</th><th>Cosa fare</th></tr>
+<tr><td>Il doppio clic non apre la configurazione</td><td>Il punto giusto è l'angolo in alto a destra della <i>pagina</i>, non del telefono. Fai due clic rapidi. In alternativa premi <kbd>Tab</kbd> e poi <kbd>Invio</kbd>.</td></tr>
+<tr><td>Le modifiche non ci sono più</td><td>Il browser o il profilo sono diversi, oppure la memoria del sito è stata cancellata. Importa l'ultimo file esportato.</td></tr>
+<tr><td>Compare il testo predefinito invece della mia risposta</td><td>La domanda scritta non coincide con una configurata. Controlla il testo, oppure usa i suggerimenti.</td></tr>
+<tr><td>Il pulsante di follow-up mostra il testo predefinito</td><td>Il testo del follow-up non è identico a quello della domanda da richiamare: confrontali parola per parola, apostrofi compresi.</td></tr>
+<tr><td>L'immagine non compare</td><td>Controlla che il file sia nella stessa cartella del file HTML e che il nome (estensione compresa) sia identico a quello scritto. Compare un riquadro con il nome cercato.</td></tr>
+<tr><td>"Il file non è una configurazione valida"</td><td>Usa un JSON esportato da questa pagina o con la struttura descritta nell'appendice.</td></tr>
+<tr><td>↓ non salta l'attesa</td><td>Controlla che un passo sia davvero in corso (spinner attivo) e che il cursore non sia in un campo del pannello. Su un dispositivo senza tastiera il salto non è disponibile.</td></tr>
+<tr><td>Il pulsante Copia dice "Copia non disponibile"</td><td>Alcuni browser limitano gli appunti per i file aperti dal disco. Seleziona e copia il testo a mano.</td></tr>
+<tr><td>La digitazione è troppo lenta, troppo veloce o assente</td><td>Cambia "Digitazione simulata" nelle impostazioni generali. Con 0 non c'è digitazione. Per una digitazione senza errori né pause scegli "No" in "Incertezza ed errori di battitura simulati". Per completarla subito, premi <kbd>↓</kbd>.</td></tr>
+<tr><td>Il telefono è tagliato o troppo grande</td><td>Regola lo zoom del browser (<kbd>Ctrl</kbd> + <kbd>-</kbd> o <kbd>Cmd</kbd> + <kbd>-</kbd>).</td></tr>
+</table></div>
+
+<h2 id="limiti">11. Limiti</h2>
+<ul>
+<li>È un mockup: le risposte non sono generate, ma sono quelle che scrivi. Non c'è collegamento ad alcun sistema.</li>
+<li>La conversazione non viene salvata: ricaricando la pagina si riparte dalla home. La configurazione invece resta.</li>
+<li>Il Digest del menu laterale è un segnaposto.</li>
+<li>Il testo libero viene riconosciuto solo se coincide con una domanda configurata.</li>
+<li>La tabella supporta solo testo semplice nelle celle (niente grassetto o citazioni).</li>
+<li>Non ci sono suoni né notifiche a comparsa.</li>
+<li>Per ogni risposta c'è un solo elenco di passi, mostrato in sequenza.</li>
+</ul>
+
+<h2 id="json">Appendice: formato del JSON</h2>
+<p>Il file di configurazione è un JSON in codifica UTF-8. Esempio minimo con tutti i campi:</p>
+<pre><code>{
+  "name": "Alex",
+  "greet": "Buonasera",
+  "typeSpeed": 22,
+  "typeHuman": true,
+  "lineMin": 1,
+  "lineMax": 3,
+  "fallback": "Testo per le domande non configurate",
+  "recents": "Prima chat recente\nSeconda chat recente",
+  "cats": [
+    {
+      "label": "Esempio",
+      "prompts": [
+        {
+          "q": "Testo della domanda",
+          "hidden": false,
+          "dotsSec": 0.8,
+          "ack": "Ecco cosa faccio: cerco i dati.",
+          "ackSec": 2,
+          "steps": [
+            {
+              "kind": "slack",
+              "label": "Ricerca su Slack",
+              "detail": "con:alex dopo:oggi",
+              "res": "20 risultati",
+              "state": "ok",
+              "min": 1.2,
+              "max": 2,
+              "say": "Cerco subito.",
+              "sayWait": 1.5
+            }
+          ],
+          "type": "table",
+          "intro": "Testo con **grassetto** e citazione [1].",
+          "cols": "Opportunità | Importo | Stato",
+          "rows": "Trattativa A | 10.000 € | Aperta",
+          "outro": "Testo dopo la tabella",
+          "follow": "Domanda di follow-up",
+          "sources": "CRM | Opportunità aperte",
+          "images": "grafico-pipeline.png | Didascalia"
+        }
+      ]
+    }
+  ]
+}</code></pre>
+
+<div class="tablewrap"><table>
+<tr><th>Campo</th><th>Valori e note</th></tr>
+<tr><td><code>lineMin</code>, <code>lineMax</code></td><td>Secondi di attesa minima e massima tra una riga e la successiva nei messaggi dell'agente su più righe. Se mancano valgono 1 e 3; se il massimo è minore del minimo viene portato al minimo.</td></tr>
+<tr><td><code>typeHuman</code></td><td><code>true</code> o <code>false</code>: attiva o disattiva pause ed errori di battitura simulati. Se manca, vale <code>true</code>.</td></tr>
+<tr><td><code>typeSpeed</code></td><td>Caratteri al secondo della digitazione simulata. 0 la disattiva. Se manca, vale 22.</td></tr>
+<tr><td><code>name</code>, <code>greet</code>, <code>fallback</code>, <code>recents</code></td><td>Testi. Con <code>greet</code> vuoto il saluto dipende dall'ora. In <code>recents</code> e nei campi multiriga si va a capo con <code>\n</code>.</td></tr>
+<tr><td><code>cats[].label</code></td><td>Nome della categoria (chip della home).</td></tr>
+<tr><td><code>prompts[].q</code></td><td>Testo della domanda. Deve essere unico se vuoi richiamarlo con un follow-up.</td></tr>
+<tr><td><code>prompts[].hidden</code></td><td><code>true</code> o <code>false</code>. Se <code>true</code> la domanda non compare nei suggerimenti né nei follow-up e si digita con la freccia a destra. Se manca, vale <code>false</code>.</td></tr>
+<tr><td><code>prompts[].dotsSec</code></td><td>Secondi tra l'invio della domanda e la comparsa del primo messaggio (tre pallini di attesa). Con 0 il messaggio compare subito. Se manca, vale 0,8.</td></tr>
+<tr><td><code>prompts[].ack</code>, <code>ackSec</code></td><td>Risposta immediata mostrata prima dei passi e secondi di permanenza prima che parta il primo passo. Se <code>ack</code> è vuoto o manca, non compare nulla. Se <code>ackSec</code> manca, vale 1,5.</td></tr>
+<tr><td><code>steps[].kind</code></td><td><code>sf</code> (Salesforce), <code>slack</code>, <code>agent</code> (altro agente), <code>web</code>, <code>other</code>.</td></tr>
+<tr><td><code>steps[].state</code></td><td><code>ok</code> (completato), <code>retry</code> (nuovo tentativo), <code>error</code> (errore).</td></tr>
+<tr><td><code>steps[].min</code>, <code>max</code></td><td>Secondi (numeri, anche decimali). Il massimo non dovrebbe essere minore del minimo.</td></tr>
+<tr><td><code>steps[].label</code>, <code>detail</code>, <code>res</code>, <code>say</code>, <code>sayWait</code></td><td>Etichetta, dettaglio, esito e messaggio dell'agente prima del passo. <code>sayWait</code> sono i secondi tra il messaggio e l'inizio del passo (se manca vale 0).</td></tr>
+<tr><td><code>type</code></td><td><code>text</code> oppure <code>table</code>.</td></tr>
+<tr><td><code>intro</code></td><td>Testo della risposta (grassetto, elenchi, citazioni, immagini nel testo).</td></tr>
+<tr><td><code>cols</code>, <code>rows</code>, <code>outro</code></td><td>Usati solo con <code>type</code> uguale a <code>table</code>. Celle separate da <code>|</code>, una riga per riga.</td></tr>
+<tr><td><code>follow</code></td><td>Una domanda per riga, separate da <code>\n</code>.</td></tr>
+<tr><td><code>sources</code></td><td>Una fonte per riga: <code>titolo | dettaglio</code>. L'ordine corrisponde ai numeri [1], [2], …</td></tr>
+<tr><td><code>images</code></td><td>Una riga per immagine: <code>nome-file | didascalia</code>.</td></tr>
+</table></div>
+<p>Se un campo manca o ha un tipo errato, all'importazione viene sostituito da un valore predefinito (testo vuoto, "Solo testo", "Completato"). Se manca la struttura <code>cats</code>, il file viene rifiutato.</p>
+
+</main>
+</div>
+<footer>Manuale del mockup Agentforce Coworker. Tutti i nomi, i luoghi e i numeri negli esempi sono fittizi.</footer>
+</body>
+</html>

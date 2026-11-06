@@ -1,0 +1,250 @@
+{
+  "name": "Alex",
+  "greet": "",
+  "fallback": "In questa anteprima rispondo solo alle domande configurate. Aggiungila nel pannello di configurazione.",
+  "recents": "Riepilogo delle mie attività della settimana\nQuali clienti non sento da più di un mese?\nPrepara un messaggio di follow-up per Rossi Spa",
+  "cats": [
+    {
+      "label": "Trova",
+      "prompts": [
+        {
+          "q": "Mostrami le mie opportunità aperte",
+          "steps": [
+            {
+              "kind": "sf",
+              "label": "Ricerca record Salesforce (Opportunità)",
+              "detail": "",
+              "res": "14 risultati",
+              "state": "ok",
+              "min": 1.2,
+              "max": 1.7,
+              "say": "",
+              "sayWait": 0
+            }
+          ],
+          "type": "table",
+          "intro": "Ecco le tue 14 opportunità aperte, ordinate per data di chiusura:",
+          "cols": "Opportunità | Importo | Fase | Chiusura",
+          "rows": "Trattoria Aurora - Espansione | 450.000 € | Negoziazione | 12 ott\nGrill Nord - Consegna multi-sede | 275.000 € | Negoziazione | 13 ott\nCatena Sole - Onboarding (5 sedi) | 1.200.000 € | Revisione proposta | 26 ott",
+          "outro": "Vuoi che prepari un riepilogo per la prima trattativa?",
+          "follow": "Trova le trattative ferme da 14 giorni",
+          "sources": "Opportunità Trattoria Aurora | Salesforce\nOpportunità Grill Nord | Salesforce",
+          "images": "",
+          "hidden": false,
+          "ack": "Recupero subito le tue opportunità aperte.",
+          "ackSec": 1.2,
+          "dotsSec": 0.8
+        },
+        {
+          "q": "Trova le trattative ferme da 14 giorni",
+          "steps": [
+            {
+              "kind": "sf",
+              "label": "Ricerca record Salesforce (Attività)",
+              "detail": "Opportunità senza attività dal 2 ottobre",
+              "res": "3 risultati",
+              "state": "ok",
+              "min": 1.2,
+              "max": 1.7,
+              "say": "",
+              "sayWait": 0
+            }
+          ],
+          "type": "table",
+          "intro": "Queste trattative non hanno attività recenti:",
+          "cols": "Opportunità | Importo | Fase | Ultima attività",
+          "rows": "Bistrot Mare | 90.000 € | Qualifica | 28 set\nPizzeria Colle | 120.000 € | Proposta | 30 set\nCaffè Centrale | 60.000 € | Qualifica | 1 ott",
+          "outro": "Posso preparare una bozza di e-mail di follow-up per ciascuna.",
+          "follow": "",
+          "sources": "",
+          "images": "",
+          "hidden": false,
+          "ack": "Controllo le attività registrate sulle tue trattative.",
+          "ackSec": 1.2,
+          "dotsSec": 0.8
+        },
+        {
+          "q": "Com'è andata la settimana con i clienti principali?",
+          "steps": [
+            {
+              "kind": "sf",
+              "label": "Leggo le opportunità aggiornate",
+              "detail": "Opportunità dei clienti principali, ultimi 7 giorni",
+              "res": "8 opportunità",
+              "state": "ok",
+              "min": 1.2,
+              "max": 1.8,
+              "say": "",
+              "sayWait": 0
+            },
+            {
+              "kind": "agent",
+              "label": "Contatto l'agente Customer Success",
+              "detail": "Richiesta: riepilogo della settimana",
+              "res": "1 risposta",
+              "state": "ok",
+              "min": 1.4,
+              "max": 2,
+              "say": "",
+              "sayWait": 0
+            }
+          ],
+          "type": "table",
+          "intro": "Ecco il riepilogo della settimana con i clienti principali [1][2]:",
+          "cols": "Indicatore | Valore",
+          "rows": "Opportunità aggiornate | 8\nProposte inviate | 3\nContratti firmati | 2\nTrattative a rischio | 1",
+          "outro": "**Una sola trattativa richiede attenzione.** Vuoi i dettagli?",
+          "follow": "",
+          "sources": "Salesforce | Opportunità aggiornate\nAgente Customer Success | Riepilogo della settimana",
+          "images": "",
+          "hidden": true,
+          "ack": "Raccolgo i risultati della settimana.",
+          "ackSec": 1.5,
+          "dotsSec": 0.8
+        }
+      ]
+    },
+    {
+      "label": "Aggiornami",
+      "prompts": [
+        {
+          "q": "Mi dici quali attività sono importanti oggi",
+          "steps": [
+            {
+              "kind": "sf",
+              "label": "Ricerca record Salesforce (Attività)",
+              "detail": "Nuovo tentativo con una query alternativa",
+              "res": "",
+              "state": "retry",
+              "min": 1.1,
+              "max": 1.5,
+              "say": "",
+              "sayWait": 0
+            },
+            {
+              "kind": "slack",
+              "label": "Ricerca su Slack",
+              "detail": "con:alex dopo:oggi",
+              "res": "20 risultati",
+              "state": "ok",
+              "min": 1.2,
+              "max": 1.8,
+              "say": "",
+              "sayWait": 0
+            },
+            {
+              "kind": "agent",
+              "label": "Contatto l'agente Customer Success",
+              "detail": "Richiesta: stato delle trattative segnalate",
+              "res": "3 risposte",
+              "state": "ok",
+              "min": 1.4,
+              "max": 2,
+              "say": "Chiedo un parere all'agente Customer Success sulle trattative collegate.",
+              "sayWait": 1
+            }
+          ],
+          "type": "text",
+          "intro": "Non hai attività in scadenza oggi nel CRM. Ecco cosa emerge da Slack:\n- **Demo per un cliente**: Marco ti ha chiesto se il tuo ambiente è disponibile [1].\n- **Rinnovo Rossi Spa**: l'agente Customer Success segnala un'approvazione in attesa [3].\n- **Contratto Aurora**: Sara attende il tuo ok sul testo finale [2].\n\nLa priorità di oggi sembra essere **il contratto Aurora**. Vuoi che approfondisca una di queste conversazioni?",
+          "cols": "",
+          "rows": "",
+          "outro": "",
+          "follow": "Riassumi le decisioni dei miei canali attivi",
+          "sources": "Conversazione #demo-clienti | Slack, 20 risultati\nMessaggio diretto di Sara | Slack\nAgente Customer Success | Risposta 1 di 3\nOpportunità Rossi Spa | Salesforce",
+          "images": "",
+          "hidden": false,
+          "ack": "**Il mio piano**\n1. **Controllo il CRM** per le attività in scadenza.\n2. **Cerco su Slack** i messaggi che aspettano una risposta.\n3. **Ti riassumo** cosa è urgente.",
+          "ackSec": 2,
+          "dotsSec": 0.8
+        },
+        {
+          "q": "Riassumi le decisioni dei miei canali attivi",
+          "steps": [
+            {
+              "kind": "slack",
+              "label": "Lettura canali Slack",
+              "detail": "4 canali attivi, ultimi 7 giorni",
+              "res": "4 canali",
+              "state": "ok",
+              "min": 1.2,
+              "max": 1.8,
+              "say": "",
+              "sayWait": 0
+            }
+          ],
+          "type": "text",
+          "intro": "Decisioni prese questa settimana:\n- Lancio del nuovo listino spostato al 3 novembre [1].\n- Il team Customer Success gestirà i rinnovi sotto i 50.000 € [2].",
+          "cols": "",
+          "rows": "",
+          "outro": "",
+          "follow": "",
+          "sources": "Canale #listino | Slack\nCanale #rinnovi | Slack",
+          "images": "",
+          "hidden": false,
+          "ack": "Leggo gli ultimi messaggi dei tuoi canali attivi.",
+          "ackSec": 1.2,
+          "dotsSec": 0.8
+        }
+      ]
+    },
+    {
+      "label": "Pianifica",
+      "prompts": [
+        {
+          "q": "Aiutami a preparare la mia prossima revisione dell'account",
+          "steps": [
+            {
+              "kind": "sf",
+              "label": "Ricerca record Salesforce (Account)",
+              "detail": "Account con revisione nei prossimi 7 giorni",
+              "res": "2 risultati",
+              "state": "ok",
+              "min": 1.2,
+              "max": 1.7,
+              "say": "",
+              "sayWait": 0
+            },
+            {
+              "kind": "slack",
+              "label": "Ricerca su Slack",
+              "detail": "\"Rossi Spa\" dopo:30 giorni",
+              "res": "11 risultati",
+              "state": "ok",
+              "min": 1.2,
+              "max": 1.8,
+              "say": "",
+              "sayWait": 0
+            },
+            {
+              "kind": "agent",
+              "label": "Contatto l'agente Customer Success",
+              "detail": "Richiesta: indicatori di salute dell'account",
+              "res": "1 risposta",
+              "state": "ok",
+              "min": 1.4,
+              "max": 2,
+              "say": "",
+              "sayWait": 0
+            }
+          ],
+          "type": "text",
+          "intro": "La prossima revisione è con **Rossi Spa**, giovedì alle 15:00 [1]. Ecco cosa ti consiglio di portare:\n- **Stato commerciale**: proposta in revisione, chiusura prevista il 26 ottobre [1].\n- **Rischi**: approvazione del contratto ancora aperta [2].\n- **Salute dell'account**: in calo da due settimane [3].\n\nVuoi che prepari una scaletta di discussione?",
+          "cols": "",
+          "rows": "",
+          "outro": "",
+          "follow": "",
+          "sources": "Opportunità Rossi Spa | Salesforce\nCanale #rossi-spa | Slack, 11 risultati\nAgente Customer Success | Risposta 1 di 1",
+          "images": "",
+          "hidden": false,
+          "ack": "**Preparo la revisione** in tre mosse:\n- cerco i dati dell'account nel CRM\n- leggo le conversazioni recenti su Slack\n- chiedo un parere all'agente Customer Success",
+          "ackSec": 2,
+          "dotsSec": 0.8
+        }
+      ]
+    }
+  ],
+  "typeHuman": true,
+  "typeSpeed": 28,
+  "lineMin": 1,
+  "lineMax": 3
+}
